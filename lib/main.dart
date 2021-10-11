@@ -41,27 +41,48 @@ class _MyHomePageState extends State<MyHomePage> {
               Colors.blueGrey.shade900,
             ],
           )),
-          child: Center(
-            child: Container(
-              child: CountdownTimer(
-                widgetBuilder: (ctx, timer) {
-                  if (timer == null) {
-                    return Text("the session will begin !!",
-                        style: TextStyle(fontSize: 95, color: Colors.white70));
-                  } else {
-                    late String sec, min;
-                    min = timer.min == null ? '0' : timer.min.toString();
-                    sec = timer.sec.toString().length == 1
-                        ? '0' + timer.sec.toString()
-                        : timer.sec.toString();
+          child: Column(
+            children: [
+              Card(
+                  child: Row(children: [
+                Container(
+                  width: 200,
+                  height: 200,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: AssetImage(
+                        'assets/younes.jpg',
+                      ),
+                    ),
+                  ),
+                )
+              ])),
+              Center(
+                child: Container(
+                  child: CountdownTimer(
+                    widgetBuilder: (ctx, timer) {
+                      if (timer == null) {
+                        return Text("the session will begin !!",
+                            style:
+                                TextStyle(fontSize: 95, color: Colors.white70));
+                      } else {
+                        late String sec, min;
+                        min = timer.min == null ? '0' : timer.min.toString();
+                        sec = timer.sec.toString().length == 1
+                            ? '0' + timer.sec.toString()
+                            : timer.sec.toString();
 
-                    return Text(min + ':' + sec,
-                        style: TextStyle(fontSize: 200, color: Colors.white70));
-                  }
-                },
-                endTime: endTime,
+                        return Text(min + ':' + sec,
+                            style: TextStyle(
+                                fontSize: 200, color: Colors.white70));
+                      }
+                    },
+                    endTime: endTime,
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
         ),
       ),
